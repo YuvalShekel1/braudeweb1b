@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .container{
+            width: 180px;
+            height: 260px;
+            margin:15px auto;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: gainsboro;
+
+        }
+        .butNum{
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin: 1px;
+            margin-left: 10px;
+            background-color:white;
+            text-align: center;
+            padding-top: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .butNum:hover{
+            background-color: rgb(161, 157, 158);
+            color: black;
+        }
+        .but{
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin: 1px;
+            margin-left:10px;
+            color: white;
+            background-color: black;
+            text-align: center;
+            padding-top: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .but:hover{
+            background-color: rgb(161, 157, 158);
+            color: white;
+        }
+        .butDelet{
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin: 1px;
+            margin-left:10px;
+            background-color:red;
+            text-align: center;
+            padding-top: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .butDelet:hover{
+            background-color: rgb(161, 157, 158);
+            color: red;
+        }
+        .result{
+            color: white;
+            width: 120px;
+            height: 25px;
+            margin-left: 25px;
+            margin-top: -3px;
+            background-color:black;
+            text-align: center;
+            padding: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .result:hover{
+            background-color: rgb(161, 157, 158);
+            color: white;
+        }
+        .screen{
+            background-color:rgba(255, 255, 255, 0.749);
+            width: 360px;
+            padding: 5px;
+            color: black;
+
+            margin: 5px;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center; font-size: 24px; color: black;">
+        Calculator
+    </div>
+    <div class="container">
+        <div class="screen">0</div>
+        <div class="butNum">7</div>
+        <div class="butNum">8</div>
+        <div class="butNum">9</div>
+        <div class="but">+</div>
+        <div class="butNum">4</div>
+        <div class="butNum">5</div>
+        <div class="butNum">6</div>
+        <div class="but">-</div>
+        <div class="butNum">1</div>
+        <div class="butNum">2</div>
+        <div class="butNum">3</div>
+        <div class="but">x</div>
+        <div class="butDelet">C</div>
+        <div class="butNum">0</div>
+        <div class="but">/</div>
+        <div class="but">%</div>
+        <div class="clear:both"></div>
+        <div class="result">=</div>
+
+
+
+    </div>
+
+    <!-- your app code goes here -->
+
+    <!-- special scripts for integration in App Gallery - must be placed at the bottom of the HTML after your code -->
+    <script>
+        // custom config for the MTW app 
+        const mtwAppConfig = {
+            border: true // app border in the MTW page                    
+        }
+
+        ///////////////////////////////////////////////////////
+        // implement this functions in order to use private API        
+        const sendPrivateApiRequest = async () => {
+            // your code here:
+            // sendRequestToParent({ cat: 'getAssets' })
+        }        
+
+        const acceptPrivateApiResponse = async (data) => {
+            // process received data here:
+            // console.log(data)
+        }
+
+        // use this in order to send on document load
+        document.addEventListener('DOMContentLoaded', () => {
+            // your code here:
+            //sendRequestToParent({ method: 'getAssets' })
+        })
+
+    </script>
+    <script src="https://morethanwallet.com/appstore/index.js"></script>
+</body>
+
+</html>
