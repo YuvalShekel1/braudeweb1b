@@ -4,93 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css" />
     <title>Calculator</title>
-    <style>
-        .container{
-            width: 180px;
-            height: 260px;
-            margin:15px auto;
-            display: flex;
-            flex-wrap: wrap;
-            background-color: gainsboro;
 
-        }
-        .butNum{
-            float: left;
-            width: 30px;
-            height: 30px;
-            margin: 1px;
-            margin-left: 10px;
-            background-color:white;
-            text-align: center;
-            padding-top: 5px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .butNum:hover{
-            background-color: rgb(161, 157, 158);
-            color: black;
-        }
-        .but{
-            float: left;
-            width: 30px;
-            height: 30px;
-            margin: 1px;
-            margin-left:10px;
-            color: white;
-            background-color: black;
-            text-align: center;
-            padding-top: 5px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .but:hover{
-            background-color: rgb(161, 157, 158);
-            color: white;
-        }
-        .butDelet{
-            float: left;
-            width: 30px;
-            height: 30px;
-            margin: 1px;
-            margin-left:10px;
-            background-color:red;
-            text-align: center;
-            padding-top: 5px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .butDelet:hover{
-            background-color: rgb(161, 157, 158);
-            color: red;
-        }
-        .result{
-            color: white;
-            width: 120px;
-            height: 25px;
-            margin-left: 25px;
-            margin-top: -3px;
-            background-color:black;
-            text-align: center;
-            padding: 5px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .result:hover{
-            background-color: rgb(161, 157, 158);
-            color: white;
-        }
-        .screen{
-            background-color:rgba(255, 255, 255, 0.749);
-            width: 360px;
-            padding: 5px;
-            color: black;
-
-            margin: 5px;
-            border-radius: 4px;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -99,33 +15,158 @@
     </div>
     <div class="container">
         <div class="screen">0</div>
-        <div class="butNum">7</div>
-        <div class="butNum">8</div>
-        <div class="butNum">9</div>
-        <div class="but">+</div>
-        <div class="butNum">4</div>
-        <div class="butNum">5</div>
-        <div class="butNum">6</div>
-        <div class="but">-</div>
-        <div class="butNum">1</div>
-        <div class="butNum">2</div>
-        <div class="butNum">3</div>
-        <div class="but">x</div>
-        <div class="butDelet">C</div>
-        <div class="butNum">0</div>
-        <div class="but">/</div>
-        <div class="but">%</div>
-        <div class="clear:both"></div>
-        <div class="result">=</div>
+        <div>
+            <button class="but">MC</button>
+            <button class="but">MR</button>
+            <button class="but">M+</button>
+            <button class="but">M-</button>
+            <button class="but">MS</button>
+            <button class="but">M*</button>
+            <button class="but" id="AC">AC</button>
+        </div>
+        <div>
+            <button class="but">(</button>
+            <button class="but">)</button>
+            <button class="but">7</button>
+            <button class="but">8</button>
+            <button class="but">9</button>
+            <button class="but">x^y</button>
+            <button class="but" id="clear-button">&larr;</button>
+            </div>
+        <div>
+        <button class="but">sin</button>
+        <button class="but">cos</button>
+        <button class="but">4</button>
+        <button class="but">5</button>
+        <button class="but">6</button>
+        <button class="but" id="add-button">+</button>
+        <button class="but" id="subtraction-button">-</button>
+
+        </div>
+        <div>
+        <button class="but">tan</button>
+        <button class="but">log</button>
+        <button class="but" >1</button>
+        <button class="but">2</button>
+        <button class="but">3</button>
+        <button class="but" id="multiply-button">x</button>
+        <button class="but">:</button>
+       
+        </div>
+        <div>
+        <button class="but">ln</button>
+        <button class="but">%</button>
+        <button class="but">x!</button>
+        <button class="but">0</button>
+        <button class="but" id="point-button">.</button>
+        <button class="but" id="equal-button">=</button>
+        </div>
+
+
 
 
 
     </div>
 
+
+
     <!-- your app code goes here -->
 
     <!-- special scripts for integration in App Gallery - must be placed at the bottom of the HTML after your code -->
     <script>
+
+            let result=''
+            let num1=''
+            let operation=''
+            let num2=''
+            let buts = document.querySelectorAll(".but")
+            buts.forEach(b=> {
+                b.addEventListener("click", btnClick)
+            })
+
+            let ac=document.querySelector("#AC")
+            ac.removeEventListener("click",btnClick)
+            ac.addEventListener("click",funcClear)
+
+            let equal=document.querySelector("#equal-button")
+            equal.removeEventListener("click",btnClick)
+            equal.addEventListener("click",funcCalc)
+
+            let clearButton = document.querySelector("#clear-button");
+            clearButton.removeEventListener("click", btnClick);
+            clearButton.addEventListener("click", funclearbutton);
+
+            function funclearbutton() {
+              let value = document.querySelector(".screen");
+              value.textContent = value.textContent.slice(0, -1);
+}
+
+            
+
+
+
+            function funcClear(){
+                document.querySelector(".screen").textContent=" "
+                result=''
+                document.querySelector(".screen").textContent = '0'
+            }
+
+
+
+            function funcCalc(){
+                let value=document.querySelector(".screen")
+                value.textContent = value.textContent.replace(/x/g, '*')
+                value.textContent = value.textContent.replace(/:/g, '/')
+                value.textContent = value.textContent.replace(/\^/g, '**')   
+                value.textContent=eval(value.textContent)
+
+            }
+
+
+
+            
+
+            function btnClick() {
+            if(this.textContent=='x^y'){
+                result+="^"
+            
+            }
+            else if(this.textContent=='x!'){
+                let num=result
+                while(num>1){
+                    result*=(num-1)
+                    num=num-1
+                }
+                
+            }
+            else if(result=='cos'){
+                result=Math.cos(this.textContent * (Math.PI / 180))
+
+            }
+            else if(result=='sin'){
+                result=Math.sin(this.textContent * Math.PI / 180)
+
+            }
+            else if(result=='tan'){
+                result=Math.tan(this.textContent * Math.PI / 180);
+            }
+            else if(result=='ln'){
+                result=Math.log(this.textContent)
+            }
+            else if(result=='log'){
+                result=Math.log10(this.textContent)
+            }
+            else if(this.textContent=='%'){
+                result=(result/100)
+            }
+
+            else{
+             let buttonText = this.textContent
+             result += buttonText
+            }
+
+             document.querySelector(".screen").textContent = result
+}
         // custom config for the MTW app 
         const mtwAppConfig = {
             border: true // app border in the MTW page                    
